@@ -6,7 +6,6 @@ import { AddModal } from '@/components/AddModal';
 import { ModalDataType } from '@/types/index.types';
 import { usePetContext } from '@/context/petContext';
 import { PetListItem } from '@/components/PetListItem';
-import { Loader2 } from 'lucide-react-native';
 import SpinningLoader from '@/components/SpinningLoader';
 
 

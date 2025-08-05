@@ -6,8 +6,8 @@ export const petSchema = z.object({
   age: z
     .string()
     .optional()
-    .refine(val => !val || !isNaN(Number(val)), {
-      message: 'Age must be a number',
+    .refine(val => !val || !isNaN(Number(val)) || Number(val) > 300 || Number(val) < 0 , {
+      message: 'Age must be a number between 0 and 100',
     }),
 });
 

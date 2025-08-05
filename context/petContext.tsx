@@ -1,4 +1,3 @@
-// context/AppContext.tsx
 import React, { createContext, useReducer, useContext, ReactNode } from 'react';
 
 export type PetData = {
@@ -32,12 +31,8 @@ const initialState: State = {
 type Action =
   | { type: 'SET_IMAGE'; payload: string }
   | { type: 'SET_FORM'; payload: Partial<PetData> }
-  | { type: 'SUBMIT_START' }
-  | { type: 'SUBMIT_SUCCESS' }
   | { type: 'SUBMIT_ERROR'; payload: string }
   | { type: 'SAVE_SUBMISSION' }
-  | { type: 'RESET_FORM' }
-  | { type: 'RESET_ALL' };
 
 
 function reducer(state: State, action: Action): State {
@@ -52,9 +47,6 @@ function reducer(state: State, action: Action): State {
         ...state,
         currentForm: { ...state.currentForm, ...action.payload },
       };
-    case 'SUBMIT_START':
-      return { ...state, loading: true, error: null, success: false };
-    case 'SUBMIT_SUCCESS':
       return { ...state, loading: false, success: true };
     case 'SUBMIT_ERROR':
       return { ...state, loading: false, error: action.payload };
@@ -63,24 +55,10 @@ function reducer(state: State, action: Action): State {
         ...state,
         submissions: [...state.submissions, state.currentForm],
       };
-    case 'RESET_FORM':
-      return {
-        ...state,
-        currentForm: {
-          image: null,
-          petName: '',
-          breed: '',
-          age: '',
-        },
-        loading: false,
-        error: null,
-        success: false,
-      };
-    case 'RESET_ALL':
-      return initialState;
     default:
       return state;
   }
+  // We can also add reset action if needed
 }
 
 export const PetContext = createContext<{

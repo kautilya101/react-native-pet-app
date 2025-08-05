@@ -15,6 +15,7 @@ import {
   Keyboard,
   Image,
   Alert,
+  ToastAndroid,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { ModalDataType } from '@/types/index.types';
@@ -84,7 +85,8 @@ export const AddModal = ({ open, onClose, onSubmit }: Props) => {
       const data = await response.json();
       setImage(data.message);
     } catch (error) {
-      Alert.alert('Error', 'Failed to fetch image from API');
+      console.error('Error fetching image from API:', error);
+      ToastAndroid.show('Failed to fetch image from API', ToastAndroid.SHORT);
     }
     finally{
       setLoading(false);
@@ -94,6 +96,7 @@ export const AddModal = ({ open, onClose, onSubmit }: Props) => {
   const handleFormSubmit = (data: PetFormData) => {
     if(!image) {
       Alert.alert('Image required', 'Please select or take a photo of your pet.');
+      return;
     }
     onSubmit({...data, image });
     onClose();
@@ -106,7 +109,6 @@ export const AddModal = ({ open, onClose, onSubmit }: Props) => {
           <View style={styles.modal}>
             <Text style={styles.title}>Add Pet</Text>
             
-             {/* Image Preview */}
             {
               loading ? (
                 <View style={styles.imageGenerating}>
