@@ -20,12 +20,12 @@ npx expo start
 ## Architecture
 ```bash
 .
-├── App.tsx
+├── app
 ├── components/        # UI components like PetListItem, FAB, Modal
+├── types/        
 ├── context/           # Global app state (petContext)
-├── screens/           # Screen-level views
 ├── assets/            # App images/icons
-└── utils/             # Helper functions
+└── utils/             # zod schema 
 ```
 
 ##Libraries Used
