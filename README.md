@@ -1,8 +1,39 @@
-> Why do I have a folder named ".expo" in my project?
-The ".expo" folder is created when an Expo project is started using "expo start" command.
-> What do the files contain?
-- "devices.json": contains information about devices that have recently opened this project. This is used to populate the "Development sessions" list in your development builds.
-- "settings.json": contains the server configuration that is used to serve the application manifest.
-> Should I commit the ".expo" folder?
-No, you should not share the ".expo" folder. It does not contain any information that is relevant for other developers working on the project, it is specific to your machine.
-Upon project creation, the ".expo" folder is already added to your ".gitignore" file.
+# 🐾 PetList - React Native App
+
+A simple React Native application to add, view, and manage a list of pets with image, name, breed, and age. Built with modern best practices using React Native, React Hook Form, Zod, and Expo.
+
+---
+
+## 🚀 How to Run the App
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/petlist-app.git
+cd petlist-app
+npm install
+# or
+yarn install
+npx expo start
+```
+
+## Architecture
+```bash
+.
+├── App.tsx
+├── components/        # UI components like PetListItem, FAB, Modal
+├── context/           # Global app state (petContext)
+├── screens/           # Screen-level views
+├── assets/            # App images/icons
+└── utils/             # Helper functions
+```
+
+##Libraries Used
+
+| Library                    | Purpose                                                 |
+| -------------------------- | ------------------------------------------------------- |
+| `expo`                     | Fast, zero-config development workflow for React Native |
+| `react-hook-form`          | Form management                                         |
+| `zod`                      | Schema-based form validation                            |
+| `expo-image-picker`        | Allows picking images from camera or gallery            |
+| `lucide-react-native`      | Icon system used across the app                         |
