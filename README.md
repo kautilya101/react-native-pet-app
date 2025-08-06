@@ -14,7 +14,8 @@ cd petlist-app
 npm install
 # or
 yarn install
-npx expo start
+npx expo start             // if testing on your own mobile device (generates QR code that can be scanned in expo app)
+npx expo start --localhost // if testing on local machine
 ```
 
 ## Architecture
